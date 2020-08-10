@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+
+  techy:
+    image: &techy_version techy:20.8.1
+    build:
+      context: blog
+      dockerfile: techy/Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      PORT: 8000
+      BL_VERSION: *techy_version
+    volumes:
+      - ./blog/techy:/techy

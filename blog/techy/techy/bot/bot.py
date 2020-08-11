@@ -77,7 +77,7 @@ class Bot:
                 # this happens if the post is already liked and is getting liked again
                 # like -> dislike -> like | okay
                 # like -> dislike -> dislike | not okay
-                print(f'{exception} fired')
+                print(f'{exception} fired, can not like a post that is already liked')
 
 
 if __name__ == "__main__":

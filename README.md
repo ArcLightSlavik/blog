@@ -31,7 +31,7 @@ $ gunicorn -b :8000 -k uvicorn.workers.UvicornWorker --reload techy.main:app
 
 ### Option 1: Postman 
 ```
-Postman: https://www.getpostman.com/collections/81b487c564675cf20f02
+Postman: https://www.getpostman.com/collections/5aa33f7c6239ea525429
 ```
 
 ### Option 2: List of endpoints

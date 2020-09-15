@@ -1,4 +1,8 @@
-from sqlalchemy import Column, Integer, String, DateTime
+from sqlalchemy import Column
+from sqlalchemy import String
+from sqlalchemy import Integer
+from sqlalchemy import DateTime
+
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 

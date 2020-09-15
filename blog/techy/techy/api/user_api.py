@@ -1,15 +1,22 @@
 from typing import List
-from fastapi import Depends, HTTPException, APIRouter
+
+from fastapi import Depends
+from fastapi import APIRouter
+from fastapi import HTTPException
+
 from datetime import timedelta
 
 from sqlalchemy.orm import Session
 
 from ..database import get_db
 from ..services import user_crud
-from ..jwt_encrypt import create_access_token, get_current_user
+from ..jwt_encrypt import get_current_user
+from ..jwt_encrypt import create_access_token
 
-from ..schemas.user_schema import UserInfo, UserCreate, UserAuthenticate
 from ..schemas.post_schema import PostInfo
+from ..schemas.user_schema import UserInfo
+from ..schemas.user_schema import UserCreate
+from ..schemas.user_schema import UserAuthenticate
 
 user_router = APIRouter()
 

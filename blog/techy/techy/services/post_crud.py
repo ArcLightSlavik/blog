@@ -5,7 +5,8 @@ from sqlalchemy.orm import Session
 
 from .user_crud import update_user_last_action
 
-from ..models import post_model, like_model
+from ..models import post_model
+from ..models import like_model
 from ..schemas import post_schema
 from ..exceptions import LikeException
 

@@ -1,4 +1,8 @@
-from sqlalchemy import Column, Integer, Boolean, ForeignKey, DateTime
+from sqlalchemy import Column
+from sqlalchemy import Integer
+from sqlalchemy import Boolean
+from sqlalchemy import DateTime
+from sqlalchemy import ForeignKey
 
 from .user_model import Base
 

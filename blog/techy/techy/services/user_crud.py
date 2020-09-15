@@ -4,7 +4,8 @@ from typing import Dict
 from datetime import datetime
 from sqlalchemy.orm import Session
 
-from ..models import user_model, post_model
+from ..models import user_model
+from ..models import post_model
 from ..schemas import user_schema
 
 

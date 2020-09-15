@@ -1,6 +1,7 @@
 import jwt
 
-from datetime import timedelta, datetime
+from datetime import datetime
+from datetime import timedelta
 
 from fastapi import Depends
 from fastapi.security import OAuth2PasswordBearer

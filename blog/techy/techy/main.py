@@ -1,16 +1,18 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI
+from fastapi import Request
 from fastapi.responses import JSONResponse
 
 from .database import engine
 
-from .models.user_model import User
-from .models.post_model import Post
-from .models.like_model import Like
+from .exceptions import LikeException
+from .exceptions import CredentialsException
 
 from .api.user_api import user_router
 from .api.post_api import post_router
 
-from .exceptions import CredentialsException, LikeException
+from .models.user_model import User
+from .models.post_model import Post
+from .models.like_model import Like
 
 User.metadata.create_all(engine)
 Post.metadata.create_all(engine)

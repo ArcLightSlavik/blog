@@ -4,9 +4,9 @@ from fastapi import HTTPException
 
 from sqlalchemy.orm import Session
 
+from ..database import get_db
 from ..services import post_crud
 from ..services import user_crud
-from ..database import get_db
 
 from ..jwt_encrypt import get_current_user
 
@@ -19,7 +19,7 @@ post_router = APIRouter()
 
 
 @post_router.post("/post", response_model=PostInfo, status_code=201)
-def create_post(post: PostCreate, db: Session = Depends(get_db), current_user: UserInfo = Depends(get_current_user)):
+def create_post(post: PostCreate, current_user: UserInfo = Depends(get_current_user), db: Session = Depends(get_db)):
     db_user = user_crud.get_user_by_id(current_user.id, db=db)
     if db_user is None:
         raise HTTPException(status_code=400, detail="User with this id does not exist")

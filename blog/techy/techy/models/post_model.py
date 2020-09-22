@@ -6,7 +6,7 @@ from sqlalchemy import ForeignKey
 
 from sqlalchemy.orm import relationship
 
-from .user_model import Base
+from ..database import Base
 
 
 class Post(Base):

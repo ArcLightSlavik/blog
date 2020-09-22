@@ -4,7 +4,7 @@ from sqlalchemy import Boolean
 from sqlalchemy import DateTime
 from sqlalchemy import ForeignKey
 
-from .user_model import Base
+from ..database import Base
 
 
 class Like(Base):

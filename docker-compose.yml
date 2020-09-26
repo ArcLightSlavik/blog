@@ -10,6 +10,11 @@ services:
     environment:
       PORT: 4999
       BL_VERSION: *blog_version
+      POSTGRES_USER: blog_fast
+      POSTGRES_PASSWORD: blog_fast
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 7567
+      POSTGRES_DB: blog_fast
     ports:
       - "4999:4999"
     volumes:

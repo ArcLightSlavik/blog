@@ -7,4 +7,4 @@ ADD . /blog
 WORKDIR /blog
 
 EXPOSE $PORT
-CMD ["gunicorn", "-b", ":4999", "-k", "uvicorn.workers.UvicornWorker", "--reload", "blog.main:app"]
+CMD ["gunicorn", "-b", ":5346", "-k", "uvicorn.workers.UvicornWorker", "--reload", "blog.main:app"]

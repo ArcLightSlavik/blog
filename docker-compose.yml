@@ -20,6 +20,7 @@ services:
     volumes:
       - ./blog:/home/blog
     working_dir: /home/blog
+    command: gunicorn -b :5346 -k uvicorn.workers.UvicornWorker blog.main:app
 
   ### DATABASE
   postgres:

@@ -19,6 +19,9 @@ services:
   ### DATABASE
   postgres:
     image: postgres:12.4
+    # Uncomment to have data saved if you stop the image
+    # volumes:
+      # - postgres_data:/var/lib/postgresql/data/
     ports:
       - "7567:7567"
     environment:
@@ -26,3 +29,7 @@ services:
       - POSTGRES_USER=blog_fast
       - POSTGRES_PASSWORD=blog_fast
     command: -p 7567
+
+# Uncomment to have data saved if you stop the image
+# volumes:
+  # postgres_data:

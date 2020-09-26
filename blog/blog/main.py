@@ -1,8 +1,9 @@
 from fastapi import FastAPI
 from fastapi import Request
 from fastapi.responses import JSONResponse
+from tortoise.contrib.fastapi import register_tortoise
 
-from .database import engine
+from .postgres import TortoiseSettings
 
 from .exceptions import LikeException
 from .exceptions import CredentialsException
@@ -10,17 +11,20 @@ from .exceptions import CredentialsException
 from .api.user_api import user_router
 from .api.post_api import post_router
 
-from .models.user_model import User
-from .models.post_model import Post
-from .models.like_model import Like
-
-User.metadata.create_all(engine)
-Post.metadata.create_all(engine)
-Like.metadata.create_all(engine)
-
 app = FastAPI()
 app.include_router(user_router)
 app.include_router(post_router)
+
+
+@app.on_event("startup")
+def startup():
+    config = TortoiseSettings.generate()
+    register_tortoise(
+        app,
+        db_url=config.db_url,
+        generate_schemas=config.generate_schemas,
+        modules=config.modules,
+    )
 
 
 @app.exception_handler(CredentialsException)

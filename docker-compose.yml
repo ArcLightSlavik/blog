@@ -15,3 +15,14 @@ services:
     volumes:
       - ./blog:/home/blog
     working_dir: /home/blog
+
+  ### DATABASE
+  postgres:
+    image: postgres:12.4
+    ports:
+      - "7567:7567"
+    environment:
+      - POSTGRES_DB=blog_fast
+      - POSTGRES_USER=blog_fast
+      - POSTGRES_PASSWORD=blog_fast
+    command: -p 7567

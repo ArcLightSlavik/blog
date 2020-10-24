@@ -1,30 +1,26 @@
 from fastapi import FastAPI
 from fastapi import Request
 from fastapi.responses import JSONResponse
-from tortoise.contrib.fastapi import register_tortoise
 
-from .postgres import TortoiseSettings
+from .v1.database import engine
 
-from .exceptions import LikeException
-from .exceptions import CredentialsException
+from .v1.exceptions import LikeException
+from .v1.exceptions import CredentialsException
 
-from .api.user_api import user_router
-from .api.post_api import post_router
+from .v1.api.user_api import user_router
+from .v1.api.post_api import post_router
 
 app = FastAPI()
 app.include_router(user_router)
 app.include_router(post_router)
 
+from .v1.models.user_model import User
+from .v1.models.post_model import Post
+from .v1.models.like_model import Like
 
-@app.on_event("startup")
-def startup():
-    config = TortoiseSettings.generate()
-    register_tortoise(
-        app,
-        db_url=config.db_url,
-        generate_schemas=config.generate_schemas,
-        modules=config.modules,
-    )
+User.metadata.create_all(engine)
+Post.metadata.create_all(engine)
+Like.metadata.create_all(engine)
 
 
 @app.exception_handler(CredentialsException)

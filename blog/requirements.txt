@@ -13,6 +13,3 @@ tortoise-orm
 # Jwt
 bcrypt==3.1.7
 PyJWT==1.7.1
-
-# Fake Data
-Faker==4.1.1
